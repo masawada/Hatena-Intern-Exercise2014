@@ -4,8 +4,8 @@ use warnings;
 use Log;
 
 sub new {
-    my ($class, %args) = @_;
-    return bless \%args, $class;
+  my ($class, %args) = @_;
+  return bless \%args, $class;
 }
 
 sub parse {
@@ -20,10 +20,10 @@ sub parse {
     chomp($line);
 
     push(@result, Log->new(
-      map{
+        map{
         my ($key, $val) = split(/:/, $_, 2);
         ($val ne "-")? ($key => $val) : ();
-      } split /\t/, $line)
+        } split /\t/, $line)
     );
   }
 

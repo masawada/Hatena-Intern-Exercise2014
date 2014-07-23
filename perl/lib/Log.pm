@@ -7,8 +7,8 @@ use POSIX;
 $ENV{'TZ'} = "JST";
 
 sub new {
-    my ($class, %args) = @_;
-    return bless \%args, $class;
+  my ($class, %args) = @_;
+  return bless \%args, $class;
 }
 
 sub protocol {
