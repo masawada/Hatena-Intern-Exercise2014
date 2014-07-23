@@ -11,7 +11,7 @@ sub new {
 sub parse {
   my $self = shift;
   my $filename = $self->{filename};
-  my @result;
+  my $result = [];
 
   open my $fh, '<' , $filename or die $!;
   my @lines = <$fh>;
@@ -19,7 +19,7 @@ sub parse {
   for my $line (@lines) {
     chomp($line);
 
-    push(@result, Log->new(
+    push(@$result, Log->new(
         map{
         my ($key, $val) = split(/:/, $_, 2);
         ($val ne "-")? ($key => $val) : ();
@@ -27,7 +27,7 @@ sub parse {
     );
   }
 
-  return \@result;
+  return $result;
 } 
 
 1;
