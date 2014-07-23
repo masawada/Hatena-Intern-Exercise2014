@@ -12,7 +12,7 @@ sub group_by_user {
   my $result = {};
 
   for my $log (@{$self->{logs}}) {
-    my $user = ($log->{user})? $log->{user} : "guest";
+    my $user = $log->{user} || "guest";
     if (!$result->{$user}) { $result->{$user} = []; }
     push($result->{$user}, $log);
   }
