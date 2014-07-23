@@ -39,4 +39,22 @@ sub time {
   return POSIX::strftime "%Y-%m-%dT%H:%M:%S", localtime($self->{epoch});
 }
 
+sub to_hash {
+  my $self = shift;
+  my $result = {
+    status => $self->{status},
+    time => $self->time,
+    size => $self->{size},
+    uri => $self->uri,
+    method => $self->method,
+    referer => $self->{referer}
+  };
+
+  if (defined($self->{user})) {
+    $result->{user} = $self->{user};
+  }
+
+  return $result;
+}
+
 1;
