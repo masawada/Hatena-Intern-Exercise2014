@@ -1,10 +1,10 @@
 package Log;
 use strict;
 use warnings;
-use POSIX;
+use POSIX 'strftime';
 
 # Timezone
-$ENV{'TZ'} = "JST";
+$ENV{'TZ'} = "GMT";
 
 sub new {
   my ($class, %args) = @_;
