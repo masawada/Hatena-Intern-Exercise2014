@@ -26,3 +26,28 @@ var parseLTSVLog = function(logStr){
 };
 
 // 課題 JS-2: 関数 `createLogTable` を記述してください
+var createLogTable = function (dst, logs) {
+  var i;
+
+  var row_template = function (log) {
+    var tr = document.createElement('tr');
+    var td1 = document.createElement('td');
+    var td2 = document.createElement('td');
+    td1.innerText = log.path;
+    td2.innerText = log.reqtime_microsec;
+    tr.appendChild(td1);
+    tr.appendChild(td2);
+    return tr;
+  };
+
+  var table = document.createElement('table');
+  var tbody = document.createElement('tbody');
+  table.innerHTML = '<thead><tr><th>path</th><th>reqtime_microsec</th></tr></thead>';
+
+  for (i = 0; i < logs.length; i++) {
+    tbody.appendChild(row_template(logs[i]));
+  }
+
+  table.appendChild(tbody);
+  dst.appendChild(table);
+};
