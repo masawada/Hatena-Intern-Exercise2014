@@ -4,13 +4,13 @@ var parseLTSVLog = function(logStr){
   var records = logStr.split('\n');
   var i;
 
-  var parser = function (splitted) {
+  var parser = function (split) {
     var i, index;
     var item = {};
 
-    for (i = 0; i < splitted.length; i++) {
-      index = splitted[i].indexOf(':');
-      item[splitted[i].slice(0, index)] = splitted[i].slice(index+1);
+    for (i = 0; i < split.length; i++) {
+      index = split[i].indexOf(':');
+      item[split[i].slice(0, index)] = split[i].slice(index+1);
     }
 
     item.reqtime_microsec = Number(item.reqtime_microsec);
