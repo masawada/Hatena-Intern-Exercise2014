@@ -1,12 +1,10 @@
 // 課題 JS-1: 関数 `parseLTSVLog` を記述してください
 var parseLTSVLog = function(logStr){
-  var result = [];
   var records = logStr.split('\n');
-  var i;
+  var i, result = [];
 
   var parser = function (split) {
-    var i, index;
-    var item = {};
+    var i, index, item = {};
 
     for (i = 0; i < split.length; i++) {
       index = split[i].indexOf(':');
@@ -18,8 +16,8 @@ var parseLTSVLog = function(logStr){
   };
 
   for (i = 0; i < records.length; i++) {
-    if(records[i].length === 0) { continue; }
-    result.push(parser(records[i].split('\t')));
+    if(records[i].length !== 0)
+      result[result.length] = parser(records[i].split('\t'));
   }
 
   return result;
