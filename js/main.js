@@ -3,7 +3,7 @@ var parseLTSVLog = function(logStr){
   var records = logStr.split('\n');
   var i, result = [];
 
-  var parser = function (split) {
+  var parse_record = function (split) {
     var i, index, item = {};
 
     for (i = 0; i < split.length; i++) {
@@ -17,7 +17,7 @@ var parseLTSVLog = function(logStr){
 
   for (i = 0; i < records.length; i++) {
     if(records[i].length !== 0)
-      result[result.length] = parser(records[i].split('\t'));
+      result[result.length] = parse_record(records[i].split('\t'));
   }
 
   return result;
