@@ -14,25 +14,22 @@
         {type: 'lt_microsec', label: '<= Req Time'},
         {type: 'gt_microsec', label: '>= Req Time'}
       ],
-      currentFilterType: {type: 'all', label: 'All'}
+      currentFilterType: {type: 'all', label: 'All'},
+      tabs: [
+        {id: '#input-tab', label: 'Input', isActive: true},
+        {id: '#search-tab', label: 'Search', isActive: false}
+      ]
     },
     methods: {
-      changeTab: function (e) {
-        var key = e.target.innerHTML.toLowerCase();
-
-        document.querySelector('.current').classList.remove('current');
-        document.querySelector('.active').classList.remove('active');
-
-        e.target.parentNode.classList.add('active');
-        if (key === 'input') {
-          document.querySelector('#input-tab').classList.add('current');
-        } else if (key === 'search') {
-          document.querySelector('#search-tab').classList.add('current');
-        }
-
-        return false;
+      selectTab: function (target) {
+        this.$get('tabs').forEach(function (tab) {
+          document.querySelector(tab.id).classList.remove('current');
+          tab.isActive = false;
+        });
+        document.querySelector(target.$data.id).classList.add('current');
+        target.$data.isActive = true;
       },
-      selectTarget: function (target) {
+      selectFilter: function (target) {
         this.$set('currentFilterType', target.$data);
       },
       reloadRecords: function() {

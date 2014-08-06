@@ -12,8 +12,9 @@
     <h1>課題 JS-4</h1>
   </header>
   <ul class="nav nav-tabs" role="tablist">
-    <li v-on="click: changeTab" class="active"><a href="#">Input</a></li>
-    <li v-on="click: changeTab"><a href="#">Search</a></li>
+    <li v-repeat="tabs" v-class="active:isActive">
+      <a href="#" v-on="click: selectTab(this)">{{label}}</a>
+    </li>
   </ul>
   <!-- Search Tab -->
   <section class="tab" id="search-tab">
@@ -28,7 +29,7 @@
         </button>
         <ul class="dropdown-menu dropdown-menu-right" role="menu">
           <li v-repeat="filterType">
-            <a href="#" v-on="click: selectTarget(this)">{{label}}</a>
+            <a href="#" v-on="click: selectFilter(this)">{{label}}</a>
           </li>
         </ul>
       </div>
