@@ -1,0 +1,16 @@
+h1 {
+  font-size: 28px;
+}
+
+.tab {
+  display: none;
+  padding: 20px 0px;
+}
+
+.tab.current {
+  display: block;
+}
+
+.table {
+  margin-top: 20px;
+}

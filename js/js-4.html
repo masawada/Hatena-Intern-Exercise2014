@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>課題 JS-4</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./js-4.css">
+</head>
+<body>
+<article class="container" id="app">
+  <header class="page-header">
+    <h1>課題 JS-4</h1>
+  </header>
+  <ul class="nav nav-tabs" role="tablist">
+    <li v-on="click: changeTab" class="active"><a href="#">Input</a></li>
+    <li v-on="click: changeTab"><a href="#">Search</a></li>
+  </ul>
+  <!-- Search Tab -->
+  <section class="tab" id="search-tab">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search...">
+      <div class="input-group-btn">
+        <button type="button"
+                id="search-button"
+                class="btn btn-default dropdown-toggle"
+                data-toggle="dropdown">
+          {{currentFilterType.label}} <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+          <li v-repeat="filterType">
+            <a href="#" v-on="click: selectTarget(this)">{{label}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Output -->
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Path</th>
+          <th>Req Time (microsec)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-repeat="records">
+          <td>{{path}}</td>
+          <td>{{reqtime_microsec}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <!-- Input Tab -->
+  <section class="tab current" id="input-tab">
+    <textarea class="form-control"
+              rows="10"
+              id="input-textarea"
+              v-model="raw_records"
+              v-on="blur: reloadRecords"></textarea>
+  </section>
+</article>
+<!-- Scripts -->
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/vue/0.10.6/vue.min.js"></script>
+<script src="./main.js"></script>
+<script src="./js-4.js"></script>
+</body>
+</html>
