@@ -20,6 +20,15 @@
         {id: '#search-tab', label: 'Search', isActive: false}
       ]
     },
+    ready: function () {
+      // set default data
+      this.$set('raw_records',
+                'path:/	reqtime_microsec:123456\n'+
+                'path:/uname	reqtime_microsec:500000\n'+
+                'path:/help	reqtime_microsec:234222\n'+
+                'path:/	reqtime_microsec:94843\n');
+      this.reloadRecords();
+    },
     methods: {
       selectTab: function (target) {
         this.$get('tabs').forEach(function (tab) {
