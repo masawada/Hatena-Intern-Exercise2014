@@ -19,7 +19,10 @@
   <!-- Search Tab -->
   <section class="tab" id="search-tab">
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="Search...">
+      <input type="text"
+             class="form-control"
+             placeholder="Search..."
+             v-model="filter_data">
       <div class="input-group-btn">
         <button type="button"
                 id="search-button"
@@ -43,7 +46,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-repeat="records">
+        <tr v-repeat="records | filterRecords">
           <td>{{path}}</td>
           <td>{{reqtime_microsec}}</td>
         </tr>
